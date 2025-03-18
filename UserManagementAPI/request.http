@@ -1,0 +1,65 @@
+@UserManagementAPI_HostAddress = http://localhost:5278
+
+### Get all users (valid token)
+GET {{UserManagementAPI_HostAddress}}/users
+Accept: application/json
+Authorization: valid-token
+
+###
+
+### Get a specific user (valid token)
+GET {{UserManagementAPI_HostAddress}}/users/Alice
+Accept: application/json
+Authorization: valid-token
+
+###
+
+### Create a new user (valid token)
+POST {{UserManagementAPI_HostAddress}}/users
+Content-Type: application/json
+Authorization: valid-token
+
+{
+  "Username": "Dave",
+  "Age": 25
+}
+
+###
+
+### Update an existing user (valid token)
+PUT {{UserManagementAPI_HostAddress}}/users/Dave
+Content-Type: application/json
+Authorization: valid-token
+
+{
+  "Username": "Dave",
+  "Age": 26
+}
+
+###
+
+### Delete a user (valid token)
+DELETE {{UserManagementAPI_HostAddress}}/users/Dave
+Authorization: valid-token
+
+###
+
+### Unauthorized request (missing token)
+GET {{UserManagementAPI_HostAddress}}/users
+Accept: application/json
+
+###
+
+### Invalid token request
+GET {{UserManagementAPI_HostAddress}}/users
+Accept: application/json
+Authorization: InvalidToken
+
+###
+
+### Valid token request
+GET {{UserManagementAPI_HostAddress}}/users
+Accept: application/json
+Authorization: valid-token
+
+###
